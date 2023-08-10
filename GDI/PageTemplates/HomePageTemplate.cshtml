@@ -1,0 +1,15 @@
+﻿<editable-area area-identifier="Hero Section" />
+@if (RequestContext.CurrentURL == "/specialty-powders/" || RequestContext.CurrentURL == "/our-story" || RequestContext.CurrentURL == "/specialty-powders/" || RequestContext.CurrentURL == "/our-story/")
+{
+    <div class="grid-container">
+        <editable-area area-identifier="Repeating Section" />
+        <editable-area area-identifier="Section3" />
+        <editable-area area-identifier="commoditiesform" />
+    </div>
+}
+else
+{
+    <editable-area area-identifier="Repeating Section" />
+    <editable-area area-identifier="Section3" />
+    <editable-area area-identifier="commoditiesform" />
+}

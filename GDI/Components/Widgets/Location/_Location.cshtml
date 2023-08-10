@@ -1,0 +1,35 @@
+﻿@model GDI.Components.Widgets.Location.LocationViewModel
+@if (Model.Visible == true)
+{
+    <div class="contact-address">
+        <section class="grid-container common-content padd40" aria-label="Contact address">
+            <div class="grid-x align-center">
+                <div class="cell small-12 large-10">
+                    <div class="grid-x grid-padding-x">
+                        <div class="cell small-12 medium-6">
+                            <p>
+                                @Html.Raw(Model.AddressLine1)<br>
+                                @Html.Raw(Model.AddressLine2)<br>
+                                @Html.Raw(Model.City), @Html.Raw(Model.State)@Html.Raw(Model.Country), @Html.Raw(Model.ZipCode)
+                            </p>
+                        </div>
+                        <div class="cell small-12 medium-6">
+                            <p>
+                                T. @Html.Raw(Model.Phone) <br />E.
+                                <a href="mailto:@Model.Email">@Html.Raw(Model.Email)</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="grid-x grid-padding-x">
+                        <div class="cell small-12 medium-6">
+                            <div class="grid-x grid-margin-x">
+                                <div class="cell small-4 mobile-position"><i class="gdi gdi-map-pin" aria-hidden="true"></i></div>
+                                <div class="cell auto"><a href="https://goo.gl/maps/Gmu72nScpw62" target="_blank" class="button skyblueBtn">VIEW MAP</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+}

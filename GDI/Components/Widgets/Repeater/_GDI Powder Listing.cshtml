@@ -1,0 +1,46 @@
+﻿@using CMS.DocumentEngine
+@using Kentico.Content.Web.Mvc;
+@using Kentico.PageBuilder.Web.Mvc
+@model GDI.Components.Widgets.Repeater.RepeaterPropertiesViewModel
+@using CMS.MacroEngine;
+@using System.Globalization;
+@using CMS.SiteProvider;
+@inject IPageAttachmentUrlRetriever attachmentUrlRetriever
+@if (Model.PageTypeData != null && Model.Visible == true)
+{
+    <section aria-label='' class="powder-section grid-x grid-margin-x common-content">
+        @foreach (var Items in Model.PageTypeData)
+        {
+            <div class="cell small-12 medium-4 flex-container flex-dir-column">
+                <div class="flex-child-auto">
+                    <span class="powderImg">
+                        <img src="@Html.Raw(Items.GetStringValue("Image", ""))"
+                     alt=" @Html.Raw(Items.GetStringValue("ImageAltText", ""))" />
+                    </span>
+                    <h4> @Html.Raw(Items.GetStringValue("Title", ""))</h4>
+                    <div class="powder-flavors">
+                        <h6> @Html.Raw(Items.GetStringValue("Header1", ""))</h6>
+                        <p> @Html.Raw(Items.GetStringValue("Description1", ""))</p>
+                    </div>
+                    <div class="powder-flavors">
+                        <h6> @Html.Raw(Items.GetStringValue("Header2", ""))</h6>
+                        <p> @Html.Raw(Items.GetStringValue("Decsription2", ""))</p>
+                    </div>
+                    @if (Html.Raw(Items.GetStringValue("Header3", "")) != null)
+                    {
+                        <div class="powder-flavors">
+                            <h6> @Html.Raw(Items.GetStringValue("Header3", ""))</h6>
+                            <p> @Html.Raw(Items.GetStringValue("Description3", ""))</p>
+                        </div>
+                    }
+                </div>
+                <div class="flex-child-shrink">
+                    <a href=" @Html.Raw(Items.GetStringValue("ButtonUrl", ""))"
+               aria-label="Cheese Powders More..."
+               class="button float-right"> @Html.Raw(Items.GetStringValue("ButtonText", ""))</a>
+                </div>
+            </div>
+        }
+    </section>
+
+}

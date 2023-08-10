@@ -1,0 +1,29 @@
+﻿@model GDI.Components.Widgets.HeroImage.HeroImageViewModel
+@if (Model.Visible == true)
+{
+    @if (@Model.Transformation == "Corner")
+    {
+        @await Html.PartialAsync("~/Components/Widgets/HeroImage/_CornerHeroImage.cshtml")
+    }
+    else if (@Model.Transformation == "FullWidth")
+    {
+        @await Html.PartialAsync("~/Components/Widgets/HeroImage/_FullWidthHeroImage.cshtml")
+    }
+    else if (@Model.Transformation == "TextBoxCentered")
+    {
+        @await Html.PartialAsync("~/Components/Widgets/HeroImage/_TextBoxCenteredHeroImage.cshtml")
+    }
+    else if (@Model.Transformation == "LeftAligned")
+    {
+        @await Html.PartialAsync("~/Components/Widgets/HeroImage/_LeftAlignedHeroImage.cshtml")
+    }
+    else if (@Model.Transformation == "RightAligned")
+    {
+        @await Html.PartialAsync("~/Components/Widgets/HeroImage/_RightAlignedHeroImage.cshtml")
+    }
+    else if (@Model.Transformation == "FullImageCentered")
+    {
+        @await Html.PartialAsync("~/Components/Widgets/HeroImage/_FullImageCenteredHeroImage.cshtml")
+    }
+}
+

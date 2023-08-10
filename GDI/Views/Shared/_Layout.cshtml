@@ -1,0 +1,158 @@
+﻿@using CMS.DataEngine;
+@using CMS.Helpers;
+@using Kentico.PageBuilder.Web.Mvc;
+@using Kentico.Web.Mvc;
+@using Microsoft.AspNetCore.Http.Extensions;
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/GDI/media/GDI/favicon.ico" type="image/x-icon" rel="icon" />
+    @Html.Kentico().PageTitle()
+    @Html.Kentico().PageDescription()
+    @Html.Kentico().PageKeywords()
+    @if (Context.Kentico().PageBuilder().EditMode)
+    {
+        @Html.Kentico().PageBuilderStyles()
+    }
+    <partial name="_DefaultStylesheets.cshtml" />
+    @RenderSection("styles", required: false)
+    <script src="https://use.fortawesome.com/56c54b81.js"></script>
+    <script src="@SettingsKeyInfoProvider.GetValue("GDI_AdobeAnalyticsLink")"></script>
+</head>
+<body>
+    <div id="wrapper" class="wrapper">
+        <header class="clearfix header">
+            <a href="#maincontent" class="skipbtn">skip to main content</a>
+            <div class="grid-container">
+                <div class="grid-x">
+                    @await Component.InvokeAsync("HeaderLogo")
+                    @await Component.InvokeAsync("HeaderMenu")
+                </div>
+            </div>
+        </header>
+        <main id="maincontent">
+            @{
+                var pageURL = (RequestContext.CurrentURL);
+                @if (pageURL != "/")
+                {
+                    pageURL = pageURL.TrimEnd('/');
+                }
+            }
+            @if (Context.Response.StatusCode == 404)
+            {
+                <article class="error-page">
+                    @RenderBody()
+                    <partial name="Cart.cshtml" />
+                </article>
+            }
+            else
+            {
+                @if (pageURL == "/specialty-powders")
+                {
+                    <article class="specialty-page">
+                        @RenderBody()
+                        <partial name="Cart.cshtml" />
+                    </article>
+                }
+                else if (pageURL.Contains("/contact-us"))
+                {
+                    <article class="contact-us">
+                        @RenderBody()
+                        <partial name="Cart.cshtml" />
+                    </article>
+                }
+                else
+                {
+                    var URLClass = "";
+
+                    @if (!string.IsNullOrEmpty(pageURL))
+                    {
+                        @switch (pageURL)
+                        {
+                            case "/":
+                                URLClass = "home-page";
+                                break;
+                            case "/home":
+                                URLClass = "home-page";
+                                break;
+                            case "/bulk-dairy-products":
+                                URLClass = "bulk-dairy-product";
+                                break;
+                            case "/email-sign-up":
+                                URLClass = "email-singup";
+                                break;
+                            case "/natural-cheese":
+                                URLClass = "natural-cheese";
+                                break;
+                            case "/butter-butterfats":
+                                URLClass = "butter-butterfats";
+                                break;
+                            case "/milk-powders":
+                                URLClass = "milk-powder";
+                                break;
+                            case "/whey-powders":
+                                URLClass = "whey-powder";
+                                break;
+                            case "/contact-us/general-contact":
+                                URLClass = "contact-us";
+                                break;
+                            case "/contact-us":
+                                URLClass = "contact-us";
+                                break;
+                            case "/specialty-powders/cheese-powders":
+                                URLClass = "milk-powder";
+                                break;
+                            case "/specialty-powders/seasoning-blends":
+                                URLClass = "milk-powder";
+                                break;
+                            case "/specialty-powders/dairy-powders":
+                                URLClass = "milk-powder";
+                                break;
+                            default:
+                                URLClass = "r-and-d-page";
+                                break;
+                        }
+                    }
+                    <article class="@URLClass">
+                        @RenderBody()
+                        <partial name="Cart.cshtml" />
+                    </article>
+                }
+            }
+        </main>
+    </div>
+    <footer class="footer">
+        <section class="footer-top" aria-label="Footer Top">
+            <div class="grid-container">
+                <div class="grid-x grid-margin-x">
+                    @await Component.InvokeAsync("SocialiconsView")
+                    @await Component.InvokeAsync("ExternalPageLinksView")
+                </div>
+            </div>
+        </section>
+        <section class="footer-bottom" aria-label="Footer Bottom">
+            <div class="grid-container">
+                @await Component.InvokeAsync("CopyRightText")
+            </div>
+        </section>
+    </footer>
+    <input type="hidden" id="hdnproductrequesturl" value="@ResHelper.GetString("GDI.ProductRequestUrl")">
+    <input type="hidden" id="hdnspecialtypowderurl" value="@ResHelper.GetString("GDI.SpecialtyPowderUrl")">
+    <partial name="_DefaultScripts.cshtml" />
+    @RenderSection("scripts", required: false)
+    <partial name="_Cookies.cshtml" />
+    @if (Context.Kentico().PageBuilder().EditMode)
+    {
+        @Html.Kentico().PageBuilderScripts()
+    }
+    @{
+        var visitorState = "unauthenticated";
+        <script>var lolData = { 'visitor': { 'state': '@visitorState' } }</script>
+    }
+    @await Component.InvokeAsync("CustomMethods")
+</body>
+</html>

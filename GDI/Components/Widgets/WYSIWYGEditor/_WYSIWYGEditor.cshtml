@@ -1,0 +1,16 @@
+﻿@using GDI.Components.Widgets.Inline
+@model GDI.Components.Widgets.WYSIWYGEditor.WYSIWYGEditorViewModel
+
+@if (Model.IsVisible == true)
+{
+    @if (Context.Kentico().PageBuilder().EditMode)
+    {
+        <partial name="~/Components/Widgets/InlineEditors/_TinyMCEEditor.cshtml"
+         model='new TinyMceEditorViewModel {  PropertyName = nameof(Model.HtmlText),
+        Html = Model.HtmlText }' />
+    }
+    else
+    {
+        @Html.Raw(Model.HtmlText)
+    }
+}

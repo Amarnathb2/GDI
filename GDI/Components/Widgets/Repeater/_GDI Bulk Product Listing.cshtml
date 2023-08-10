@@ -1,0 +1,52 @@
+﻿@using CMS.DocumentEngine
+@using Kentico.PageBuilder.Web.Mvc
+@model GDI.Components.Widgets.Repeater.RepeaterPropertiesViewModel
+@using CMS.MacroEngine;
+@using System.Globalization;
+@using CMS.SiteProvider;
+@inject IPageAttachmentUrlRetriever attachmentUrlRetriever
+
+@if (Model.PageTypeData != null && Model.Visible == true)
+{
+    int numLarge = Model.NumLarge;
+    int numMedium = Model.NumMedium;
+    int numSmall = Model.NumSmall;
+
+    <div class="grid-container">
+        <section class="bulk-product-section grid-x grid-margin-x common-content mrgTB20 large-up-@Html.Raw(numLarge) medium-up-@Html.Raw(numMedium) small-up-@Html.Raw(numSmall)"
+             data-equalizer=""
+             data-equalize-by-row="true"
+             data-resize="1vqc5n-eq"
+             data-mutate="qs7j17-eq"
+             data-e="0dzkl3-e"
+             data-events="mutate">
+            @foreach (var Items in Model.PageTypeData)
+            {
+
+                <div class="cell flex-container flex-dir-column text-center @Html.Raw(Items.GetStringValue("CSSClassForProduct", ""))">
+                    <div class="flex-child-auto">
+                        <figure data-equalizer-watch="" style="height: 323px">
+                            <a href="@Html.Raw(Items.GetStringValue("ButtonUrlOne", ""))">
+                                <img src="@Html.Raw(Items.GetStringValue("Image", ""))"
+                             alt="@Html.Raw(Items.GetStringValue("ImageAltText", ""))" />
+                            </a>
+                        </figure>
+                        <h2><a href="@Html.Raw(Items.GetStringValue("ButtonUrlOne", ""))">@Html.Raw(Items.GetStringValue("Title", ""))</a></h2>
+                        <p>
+                            @Html.Raw(Items.GetStringValue("Description", ""))
+                        </p>
+                    </div>
+                    <div class="flex-child-shrink">
+                        <a aria-label="Natural Cheese Explore"
+                   href="@Html.Raw(Items.GetStringValue("ButtonUrlOne", ""))"
+                   class="button">@Html.Raw(Items.GetStringValue("ButtonTextOne", ""))</a>
+                    </div>
+                </div>
+
+
+            }
+        </section>
+    </div>
+
+
+}

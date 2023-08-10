@@ -1,0 +1,114 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+
+    <UserSecretsId>0e5c0269-684c-45c2-a9db-36b3eb6317e0</UserSecretsId>
+
+    <UserSecretsId>02112986-899f-4040-91f1-8c034ad3fda6</UserSecretsId>
+
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="GDI\media\GDI\ba-flavour-mobile.png" />
+    <None Remove="GDI\media\GDI\ba-flavour.png" />
+    <None Remove="GDI\media\GDI\bulk-dairy-small-banner.jpg" />
+    <None Remove="GDI\media\GDI\bulk-dairy-xlarge-banner.jpg" />
+    <None Remove="GDI\media\GDI\butter-product.png" />
+    <None Remove="GDI\media\GDI\c-flavour-mobile.png" />
+    <None Remove="GDI\media\GDI\c-flavour.png" />
+    <None Remove="GDI\media\GDI\cheese-butter-product-image.png" />
+    <None Remove="GDI\media\GDI\cheese-product-image.png" />
+    <None Remove="GDI\media\GDI\cheese-product-image_1.png" />
+    <None Remove="GDI\media\GDI\d-fine.png" />
+    <None Remove="GDI\media\GDI\d-finetune-mobile.png" />
+    <None Remove="GDI\media\GDI\e-count-mobile.png" />
+    <None Remove="GDI\media\GDI\e-count.png" />
+    <None Remove="GDI\media\GDI\farm-fresh.jpg" />
+    <None Remove="GDI\media\GDI\farmer-owned-logo-2020.png" />
+    <None Remove="GDI\media\GDI\favicon.ico" />
+    <None Remove="GDI\media\GDI\home-banner-image.png" />
+    <None Remove="GDI\media\GDI\home-cheese-butter-large.jpg" />
+    <None Remove="GDI\media\GDI\home-cheese-butter-medium.jpg" />
+    <None Remove="GDI\media\GDI\home-cheese-butter-small.jpg" />
+    <None Remove="GDI\media\GDI\home-cheese-butter-xlarge.jpg" />
+    <None Remove="GDI\media\GDI\home-cheese-large.jpg" />
+    <None Remove="GDI\media\GDI\home-cheese-medium.jpg" />
+    <None Remove="GDI\media\GDI\home-cheese-small.jpg" />
+    <None Remove="GDI\media\GDI\home-cheese-xlarge.jpg" />
+    <None Remove="GDI\media\GDI\home-powder-large.jpg" />
+    <None Remove="GDI\media\GDI\home-powder-medium.jpg" />
+    <None Remove="GDI\media\GDI\home-powder-pack-punch-medium.png" />
+    <None Remove="GDI\media\GDI\home-powder-small.jpg" />
+    <None Remove="GDI\media\GDI\home-powder-xlarge.jpg" />
+    <None Remove="GDI\media\GDI\milk-powder-product.png" />
+    <None Remove="GDI\media\GDI\natural-cheese-product.png" />
+    <None Remove="GDI\media\GDI\ourstory-banner-large.jpg" />
+    <None Remove="GDI\media\GDI\ourstory-feature-img1.jpg" />
+    <None Remove="GDI\media\GDI\ourstory-feature-img2.jpg" />
+    <None Remove="GDI\media\GDI\ourstory-feature-img3.jpg" />
+    <None Remove="GDI\media\GDI\powder-banner-bottom.png" />
+    <None Remove="GDI\media\GDI\powder-banner-top.png" />
+    <None Remove="GDI\media\GDI\quality-banner-large.jpg" />
+    <None Remove="GDI\media\GDI\quality-feature-img1.jpg" />
+    <None Remove="GDI\media\GDI\quality-feature-img2.jpg" />
+    <None Remove="GDI\media\GDI\quality-feature-img3.jpg" />
+    <None Remove="GDI\media\GDI\r-and-d-small-banner.png" />
+    <None Remove="GDI\media\GDI\r-and-d-xlarge-banner.png" />
+    <None Remove="GDI\media\GDI\red-powder.png" />
+    <None Remove="GDI\media\GDI\safety-quality-first-large.jpg" />
+    <None Remove="GDI\media\GDI\specialty-powder-large.jpg" />
+    <None Remove="GDI\media\GDI\specialty-powder-medium.jpg" />
+    <None Remove="GDI\media\GDI\specialty-powder-small.jpg" />
+    <None Remove="GDI\media\GDI\specialty-powder-xlarge.jpg" />
+    <None Remove="GDI\media\GDI\whey-product.png" />
+    <None Remove="GDI\media\GDI\white-powder.png" />
+    <None Remove="GDI\media\GDI\world-of-care.jpg" />
+    <None Remove="GDI\media\GDI\yellow-powder.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="7.0.0" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="Kentico.Xperience.AspNetCore.WebApp" Version="13.0.100" />
+    <PackageReference Include="Kentico.Xperience.Libraries" Version="13.0.100" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.15" />
+    <PackageReference Include="MvcSiteMapProvider.MVC5.Core" Version="4.6.26" />
+
+    <PackageReference Include="Raybiztech.XperienceAdapter" Version="13.0.100.12" />
+
+    <PackageReference Include="XperienceCommunity.UrlRedirection" Version="13.0.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+
+    <Folder Include="App_Data\CMSModules\WebFarm\" />
+
+    <Folder Include="wwwroot\scripts\" />
+
+    <ProjectReference Include="..\GDI.Business\GDI.Business.csproj" />
+    <Folder Include="Components\ViewComponents\" />
+    <Folder Include="Models\" />
+
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GDI.Business\GDI.Business.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+		<Content Include="GDI\**">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+  <ItemGroup>
+    <Content Remove="appsettings.Development.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="LOLDF_AzureSearch">
+      <HintPath>..\CustomDLL\LOLDF_AzureSearch.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

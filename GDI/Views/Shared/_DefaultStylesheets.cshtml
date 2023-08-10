@@ -1,0 +1,38 @@
+﻿@using GDI.Helpers;
+
+<environment exclude="Development">
+    @{
+        var fileMappings = new Dictionary<string, string>
+    {
+    { "~/GDI/css/lol-foundation.min.css", "wwwroot/GDI/css/lol-foundation.min.css" },
+    { "~/GDI/css/lol-main.min.css", "wwwroot/GDI/css/lol-main.min.css" },
+    { "~/GDI/css/lol-gdi-aos.min.css", "wwwroot/GDI/css/lol-gdi-aos.min.css" },
+    { "~/GDI/css/lol-gdi-ccpa.min.css", "wwwroot/GDI/lol-gdi-ccpa.min.css" },
+
+    };
+        var versionedUrls = BundlingAndMinificationVersion.GetVersionedFileUrls(fileMappings);
+    }
+    <!-- Stylesheet files -->
+    @foreach (var fileMapping in fileMappings.Where(fm => fm.Key.EndsWith(".css")))
+    {
+        <link rel="stylesheet" href="@versionedUrls[fileMapping.Key]" />
+    }
+</environment>
+<environment include="Development">
+    @{
+        var fileMappingsDev = new Dictionary<string, string>
+    {
+    { "~/GDI/css/lol-foundation.css", "wwwroot/GDI/css/lol-foundation.css" },
+    { "~/GDI/css/lol-main.css", "wwwroot/GDI/css/lol-main.css" },
+    { "~/GDI/css/lol-gdi-aos.css", "wwwroot/GDI/css/lol-gdi-aos.css" },
+    { "~/GDI/css/lol-gdi-ccpa.css", "wwwroot/GDI/lol-gdi-ccpa.css" },
+    
+    };
+        var versionedUrlsDev = BundlingAndMinificationVersion.GetVersionedFileUrls(fileMappingsDev);
+    }
+    <!-- Stylesheet files -->
+    @foreach (var fileMapping in fileMappingsDev.Where(fm => fm.Key.EndsWith(".css")))
+    {
+        <link rel="stylesheet" href="@versionedUrlsDev[fileMapping.Key]" />
+    }
+</environment>

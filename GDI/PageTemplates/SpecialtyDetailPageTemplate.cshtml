@@ -1,0 +1,164 @@
+﻿<editable-area area-identifier="Hero Section" />
+<section aria-label="Product List" id="vue-app" class="products-listing">
+    <div class="product-view-header">
+        <div class="grid-container">
+            <div class="grid-x show-for-large">
+                <div class="cell large-6">
+                    <p class="cart">
+                        <a href="javascript:void(0);" id="vue-cart">
+                            <span class="cart-items">{{selectedProductArrayLength}}</span>
+                            <span class="cart-text" v-if="selectedProductArrayLength > 1">items saved</span>
+                            <span class="cart-text" v-else>item saved</span>
+                            <span class="gdi gdi-cart-alt"></span>
+                        </a>
+                        <span class="divider" :class="{'fadeIn': clearFilters}">|</span>
+                        <span class="clear-filters" :class="{'fadeIn': clearFilters}" v-on:click="clearPageFilters">
+                            <span class="gdi gdi-times"></span>
+                            CLEAR FILTERS
+                        </span>
+                    </p>
+                </div>
+                <div class="cell large-6">
+                    <ul class="list-inline">
+                        <li>
+                            <a href="javascript:void(0)" class="list-view active">
+                                <span class="gdi gdi-view-list"></span>
+                                <span>View as list</span>
+                            </a>
+                        </li>
+                        <li class="grid-view-wrapper">
+                            <a href="javascript:void(0)" class="grid-view" v-on:click="reinitequ">
+                                <span class="gdi gdi-view-grid"></span>
+                                <span>View as grid</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--Mobile Section-->
+            <section class="hide-for-large" aria-label="Mobile Filter">
+                <button class="button blackBtn" v-if="!mobileFilter" type="button" v-on:click="mobileFilter = true">Filter</button>
+                <button class="button redBtn" v-else type="button" v-on:click="mobileFilter = false">Done</button>
+                <ul class="no-bullets filter-chipps" v-if="ChippsFiltering.length > 0">
+                    <li v-for="(chipps, index) in ChippsFiltering">{{chipps.value}} <span class="" v-on:click="filtersRemove(chipps, index)">X</span></li>
+                </ul>
+            </section>
+        </div>
+    </div>
+    <div class="grid-container product-section">
+        <div class="grid-x">
+            <div class="cell large-3 " v-bind:class="{'show-for-large': !mobileFilter }">
+                <h3 class="filters-heading">Find your flavor</h3>
+                <ul class="accordion cart-products" data-accordion data-allow-all-closed="true" data-multi-expand="true">
+                    <li class="accordion-item is-active" v-for="(filter, index) in filtersList" v-if="(filter.FilterName !== 'Availability')" data-accordion-item>
+                        <a href="#" class="accordion-title">
+                            <span class="gdi gdi-chevron-small-down" aria-hidden="true"></span>
+                            {{filter.FilterName}}
+                        </a>
+                        <div class="accordion-content" data-tab-content>
+                            <ul class="no-bullet">
+                                <li v-for="options in filter.FilterOptions">
+                                    <span class="checkbox" v-if="(filter.FilterFiledName === 'GDIProductSampleAvail')">
+                                        <input type="checkbox" v-bind:value="true" v-on:change="updateFilters()"
+                                               v-model="filtersObject[filter.FilterFiledName]" v-bind:id="options + index">
+                                        <label v-bind:for="options + index">
+                                            <span class="color" v-bind:class="options.toLowerCase().replace(' ', '-')" v-if="filter.FilterName === 'Color'"></span>
+                                            {{options}}
+                                        </label>
+                                    </span>
+                                    <span class="radio" v-else-if="(filter.FilterFiledName === 'CheesePowderType' | filter.FilterFiledName === 'DairyPowderType' | filter.FilterFiledName === 'SeasoningBlendType')">
+                                        <input type="radio" v-bind:value="options.trim()" v-on:change="updateFilters()"
+                                               v-model="filtersObject[filter.FilterFiledName]" v-bind:id="options + index">
+                                        <label v-bind:for="options + index">
+                                            <span class="color" v-bind:class="options.toLowerCase().replace(' ', '-')" v-if="filter.FilterName === 'Color'"></span>
+                                            {{options}}
+                                        </label>
+                                    </span>
+                                    <span class="checkbox" v-else>
+                                        <input type="checkbox" v-bind:value="options.trim()" v-on:change="updateFilters()"
+                                               v-model="filtersObject[filter.FilterFiledName]" v-bind:id="options + index">
+                                        <label v-bind:for="options + index">
+                                            <span class="color" v-bind:class="options.toLowerCase().replace(' ', '-')" v-if="filter.FilterName === 'Color'"></span>
+                                            {{options}}
+                                        </label>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="cell large-9" v-bind:class="{'hide': mobileFilter }">
+                <div class="grid-x list products-list" id="products-grid" data-equalizer>
+                    <div class="cell animated" data-aos="zoom-in" v-for="(product, key) of filterProducts.slice(0, counter)" v-bind:key="product.GDIProductCode">
+                        <div class="product-card grid-x" data-equalizer-watch>
+                            <div class="cell">
+                                <figure><img v-bind:src="(product.GDIProductImgSM).replace('~', '')" v-bind:alt="product.GDIProductName + ',' + product.GDIProductCode" /></figure>
+                            </div>
+                            <div class="cell">
+                                <div class="grid-x">
+                                    <div class="cell" v-if="product.CheesePowderColor"
+                                         v-bind:class="product.CheesePowderColor.toLowerCase().replace(' ', '-')">
+                                        <h5 v-html="product.GDIProductDisplayName"></h5>
+                                        <!--<p class="product-id"><span>{{product.GDIProductCode}}</span></p>-->
+                                    </div>
+                                    <div class="cell" v-else>
+                                        <h5 v-html="product.GDIProductDisplayName"></h5>
+                                        <!--<p class="product-id"><span>{{product.GDIProductCode}}</span></p>-->
+                                    </div>
+                                    <div class="cell">
+                                        <p v-html="product.GDIProductDescription"></p>
+                                        <!--<p class="product-id"><span>{{product.GDIProductCode}}</span></p>-->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell product-footer">
+                                <p>
+                                    <!--<span class="product-footer-id">{{product.GDIProductCode}}</span>-->
+                                    <button class="save button" type="button" v-on:click="saveProduct($event, product)" v-if="!product.isSaved">Save</button>
+                                    <button class="remove save button" type="button" v-on:click="removeProduct($event, product)" v-else>Remove</button>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="small-12 text-center">
+                        <button type="button" class="button fillBlueBtn" v-if="loadButton" v-on:click="showMore">LOAD MORE PRODUCTS</button>
+                        <p v-if="noProducts" class="no-products-text">We’re sorry, we don’t have anything that matches what you’re looking for. Please <strong><a href="/contact-us">contact us</a></strong> for more information or to send us a suggestion.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="reveal current-modal" id="currentModal" data-reveal>
+        <button type="button" class="button-text" data-close v-on:click="flagset">Don't Show again.</button>
+        <button class="close-button " data-close aria-label="Close modal" type="button">
+            <span class="show-for-sr">close modal</span>
+            <span aria-hidden="true">X</span>
+            <span class="show-for-medium">close</span>
+        </button>
+        <!-- modal Content-->
+        <h4 class="heading">Good Choice.</h4>
+        <div class="product-display" v-if="currentProduct">
+            <div class="grid-x grid-padding-x">
+                <div class="cell small-4 text-center">
+                    <div class="relative">
+                        <!--<span class="bar sample-bar" v-if="currentProduct.GDIProductSampleAvail">Sample is Available</span>
+                        <span class="bar info-bar" v-else>Information is Available</span>-->
+                        <img v-bind:src="(currentProduct.GDIProductImgSM).replace('~', '')" v-bind:aria-label="(currentProduct.GDIProductSampleAvail) ? 'Sample is Available' : 'Information is Available'"
+                             v-bind:alt="currentProduct.GDIProductName + ', ' + currentProduct.GDIProductCode " />
+                    </div>
+                </div>
+                <div class="cell small-8">
+                    <h5 v-html="currentProduct.GDIProductDisplayName"></h5>
+                    <!--<p>{{currentProduct.GDIProductCode}}</p>-->
+                </div>
+            </div>
+        </div>
+        <p class="saved-text">Has been saved to your cart. <span class="show-for-sr">Product Has been saved to your cart.</span><i class="gdi gdi-cart-alt"></i></p>
+        <div class="content-footer">
+            <button class="button blackBtn" type="button" data-close v-on:click="viewCart">VIEW CART <span class="alert">[{{selectedProductArrayLength}}]</span></button>
+            <button class="button fillBlackBtn" type="button" data-close> CONTINUE BROWSING</button>
+        </div>
+    </div>
+</section>
+

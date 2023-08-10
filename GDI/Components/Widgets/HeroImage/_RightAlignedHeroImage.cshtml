@@ -1,0 +1,28 @@
+﻿@model GDI.Components.Widgets.HeroImage.HeroImageViewModel
+
+<div class="grid-x m-t-5r m-b-5r">
+    <div class="cell">
+        <div class="lazy-placeHolder">
+            <div class="atlas-widget shawn atlas-hero-image atlas-hero-image--layout-d shawniscool img_S_1_1 img_M_3_1 img_L_4_1"
+                 data-interchange="[, small], [, medium], [, large]"
+                 loading="lazy" id="layzy"
+                 style="background-image: url(@Model.BackgroundImage?.Replace("~",""))"
+                 data-resize="layzy" data-t="zgeg0e-t" data-events="resize">
+                <div class="atlas-hero-details secondary-overlay">
+                    <div class="hero-image-inner">
+                        <h2>@Html.Raw(Model.HeroTitle)</h2>
+                        @if (!string.IsNullOrEmpty(Model.HeroDescription))
+                        {
+                            <p class="hide-for-small-only">
+                                @Html.Raw(Model.HeroDescription)
+                            </p>
+                        }
+                        <div class="atlas-hero-buttons">
+                            <a href="@Model.ButtonUrlOne" target="@Model.ButtonTargetOne" class="@Model.ButtonClass">@Html.Raw(Model.ButtonTextOne)</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

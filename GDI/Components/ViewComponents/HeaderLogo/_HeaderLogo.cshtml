@@ -1,0 +1,11 @@
+﻿@model GDI.Models.HeaderLogoModel
+@if (Model != null)
+{
+    <div class="cell small-4 large-3 text-center">
+        <div class="logo">
+            <a href="@Model?.HeaderPage?.HeaderLogoLink">
+                <img src="@Model?.HeaderPage?.HeaderLogo" alt="@Model?.HeaderPage?.HeaderLogoAltText" />
+            </a>
+        </div>
+    </div>
+}

@@ -1,0 +1,102 @@
+﻿@model GDI.Components.Widgets.GeneralContactForm.GeneralContactFormViewModel
+@if (Model != null && Model.IsVisible == true)
+{
+    <form id="frmContact" asp-action="SubmitContactForm" asp-controller="FormSubmit" data-ajax="true" data-ajax-method="POST" data-ajax-failure="OnFailureContactUsForm" data-ajax-success="OnSuccessContactUsForm" data-ajax-complete="OnCompleteContactUsForm">
+        @Html.AntiForgeryToken()
+        <div class="grid-container form-bottom common-form common-content padd40">
+            <div class="grid-x align-center">
+                <div class="grid-x grid-margin-x cell small-12 large-9">
+                    <div class="cell small-12">
+                        <h4 class="text-center">@Html.Raw(Model.Title)</h4>
+                        @if (!string.IsNullOrEmpty(Model.Subtitle))
+                        {
+                            <p class="text-center">
+                                @Html.Raw(Model.Subtitle)
+                            </p>
+                        }
+                        <hr>
+                    </div>
+                    <div class="cell small-12 medium-4">
+                        <label>*FIRST NAME</label>
+                        <input type="text" id="GDI_Web_Form_First_Name_Int__c" maxlength="50" name="FirstName" class="firstName">
+                        <span class="errorLabel">Please enter your First Name.</span>
+                    </div>
+                    <div class="cell small-12 medium-4">
+                        <label>*LAST NAME</label>
+                        <input type="text" id="GDI_Web_Form_Last_Name_Int__c" maxlength="100" name="LastName" class="lastName">
+                        <span class="errorLabel">Please enter your Last Name.</span>
+                    </div>
+                    <div class="cell small-12 medium-4">
+                        <label>*TITLE</label>
+                        <input type="text" id="JobTitle__c" maxlength="50" name="JobTitle" class="title">
+                        <span class="errorLabel">Please enter your Title.</span>
+                    </div>
+                    <div class="cell small-12 medium-4">
+                        <label>*EMAIL</label>
+                        <input type="text" id="email" maxlength="80" name="Email" class="email">
+                        <span class="errorLabel">Please enter your Email Address.</span>
+                    </div>
+                    <div class="cell small-12 medium-4">
+                        <label>*Company Name</label>
+                        <input type="text" id="company" maxlength="80" name="Company" class="company">
+                        <span class="errorLabel">Please enter your Company Name.</span>
+                    </div>
+                    <div class="cell small-12 medium-4">
+                        <label>*phone</label>
+                        <input type="text" id="phone" maxlength="40" name="Phone" class="phone">
+                        <span class="errorLabel">Please enter your Phone Number.</span>
+                    </div>
+                    <div class="cell small-12 medium-4">
+                        <label>*Address</label>
+                        <input type="text" id="Street_Address__c" maxlength="100" name="Address" class="city">
+                        <span class="errorLabel">Please enter your Address.</span>
+                    </div>
+                    <div class="cell small-12 medium-4">
+                        <label>Country</label>
+                        <select id="Country__c" maxlength="100" name="Country" class="country">
+                            @foreach (var item in Model?.GetCountries)
+                            {
+                                <option value="@item.Options">@item.Options</option>
+                            }
+                        </select>
+                        <span class="errorLabel">Please select your Country.</span>
+                    </div>
+                    <div class="cell small-12 medium-4">
+                        <label>*city</label>
+                        <input type="text" id="City__c" maxlength="100" name="City" class="city">
+                        <span class="errorLabel">Please enter your City.</span>
+                    </div>
+                    <div class="cell small-12 medium-4">
+                        <label><span>*</span>state</label>
+                        <select id="State__c" maxlength="100" name="State" class="state">
+                            <option value="">--State--</option>
+                            @foreach (var item in Model?.Getstates)
+                            {
+                                <option value="@item.Options">@item.Options</option>
+                            }
+                        </select>
+                        <span class="errorLabel">Please select your State.</span>
+                    </div>
+                    <div class="cell small-12 medium-4">
+                        <label><span>*</span>zip code</label>
+                        <input type="text" id="Postal_Zip_Code__c" maxlength="10" name="ZipCode" class="zip">
+                        <span class="errorLabel">Please enter your Zip Code.</span>
+                    </div>
+                    <div class="cell small-12 text-center mrgTB20">
+                        <span class="checkbox">
+                            <input type="checkbox" id="Opt_In_to_News_and_Promotions__c" name="OptIn" value="1">
+                            <label for="Opt_In_to_News_and_Promotions__c">YES, SIGN ME UP FOR NEW PRODUCT NEWS, TRENDS & INNOVATIVE FLAVORS</label>
+                        </span>
+                    </div>
+                    <div class="cell small-12">
+                        <label>COMMENTS/QUESTIONS</label>
+                        <textarea id="Reason_Comments__c" name="Comments" rows="3"></textarea>
+                    </div>
+                    <div class="cell small-12 text-center mrgTB20">
+                        <input type="submit" name="" value="Submit Request" disabled="" class="submitButton button skyblueBtn">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+}

@@ -1,0 +1,45 @@
+﻿@{
+    var currentURL = RequestContext.CurrentURL;
+    int searchIndex = currentURL.IndexOf("/search/");
+    string baseURL = searchIndex >= 0 ? currentURL.Substring(0, searchIndex + 8) : currentURL;
+}
+@if (currentURL == "/specialty-powders/cheese-powders/" || currentURL == "/specialty-powders/seasoning-blends/" || currentURL == "/specialty-powders/dairy-powders/")
+{
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+    <partial name="../Shared/ScriptLayouts/_SpecialtyPowdersScripts.cshtml" />
+}
+else if (currentURL == "/contact-us/")
+{
+    <partial name="../Shared/ScriptLayouts/_GeneralContactScripts.cshtml" />
+}
+else if (currentURL == "/product-request/")
+{
+    <partial name="../Shared/ScriptLayouts/_ProductRequestScripts.cshtml" />
+}
+else if (currentURL == "/commodities-order/")
+{
+    <partial name="../Shared/ScriptLayouts/_CommoditiesOrderScripts.cshtml" />
+}
+else if (baseURL == "/search/")
+{
+    <partial name="../Shared/ScriptLayouts/_SearchLayoutScripts.cshtml" />
+}
+else if (currentURL == "/specialty-powders-request-form/")
+{
+    <partial name="../Shared/ScriptLayouts/_SpecialityPowderRequestFormScripts.cshtml" />
+}
+else if (currentURL == "/email-sign-up/")
+{
+    <partial name="../Shared/ScriptLayouts/_EmailSignUpScripts.cshtml" />
+}
+else if (currentURL == "/natural-cheese/" || currentURL == "/butter-butterfats/" || currentURL == "/milk-powders/" || currentURL == "/whey-powders/")
+{
+     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+    <partial name="../Shared/ScriptLayouts/_AccordionScripts.cshtml" />
+}
+else
+{
+    <partial name="../Shared/ScriptLayouts/_DefaultLayoutScripts.cshtml" />
+}

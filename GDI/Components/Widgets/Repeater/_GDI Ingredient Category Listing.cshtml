@@ -1,0 +1,84 @@
+﻿@using CMS.DocumentEngine
+@using Kentico.Content.Web.Mvc;
+@using Kentico.PageBuilder.Web.Mvc
+@model GDI.Components.Widgets.Repeater.RepeaterPropertiesViewModel
+@using CMS.MacroEngine;
+@using System.Globalization;
+@using CMS.SiteProvider;
+@inject IPageAttachmentUrlRetriever attachmentUrlRetriever
+
+@if (Model.PageTypeData != null && Model.Visible == true)
+{
+    <div class="grid-container">
+        @foreach (var Items in Model.PageTypeData)
+        {
+            bool isContainSection = Items.GetBooleanValue("IsContainSection", false);
+            string image = Items.GetStringValue("BackgroundImageMedium", "").Replace('~', ' ');
+            @if (isContainSection == true)
+            {
+                <section aria-label="Cheese, butter <br>and beyond."
+                         class="home-section mrgTB20 common-content"
+                         data-interchange="[@Html.Raw(Items.GetStringValue("BackgroundImage", "").Replace('~', ' ')), default],[@Html.Raw(Items.GetStringValue("BackgroundImageSmall", "").Replace('~', ' ')), small],[@Html.Raw(Items.GetStringValue("BackgroundImageMedium", "").Replace('~', ' ')), medium],[@Html.Raw(Items.GetStringValue("BackgroundImageLarge", "").Replace('~', ' ')),large], [@Html.Raw(Items.GetStringValue("BackgroundImageXLarge", "").Replace('~', ' ')),xlarge]"
+                         data-resize="xe2tt9-interchange"
+                         id="xe2tt9-interchange"
+                         data-e="itx9ei-e"
+                         style="background-image: url('@image');">
+                    <div class="grid-x flex-dir-row-reverse align-middle">
+                        <div class="cell small-12 medium-6">
+                            <div class="homeProduct  @Html.Raw(Items.GetStringValue("CSSClassForProduct", ""))">
+                                <picture>
+                                    <source srcset="@Html.Raw(Items.GetStringValue("XLargeProductImage", "").Replace('~', ' '))" media="(min-width: 74em)" width="1050" height="640">
+                                    <source srcset="@Html.Raw(Items.GetStringValue("LargeProductImage", "").Replace('~', ' '))" media="(min-width: 64em)" width="897" height="570">
+                                    <source srcset="@Html.Raw(Items.GetStringValue("MediumProductImage", "").Replace('~', ' '))" media="(min-width: 40em)" width="768" height="445">
+                                    <img src="@Html.Raw(Items.GetStringValue("SmallProductImage", "").Replace('~', ' '))" alt="A description of the image." width="320" height="530" loading="eager" decoding="sync">
+                                </picture>
+                            </div>
+                        </div>
+                        <div class="cell small-12 medium-6">
+                            <h2> @Html.Raw(Items.GetStringValue("Title", ""))</h2>
+                            <div class="section-box @Html.Raw(Items.GetStringValue("CSSBackgroundClassOne", ""))">
+                                <h4> @Html.Raw(Items.GetStringValue("Subtitle", ""))</h4>
+                                <p>
+                                    @Html.Raw(Items.GetStringValue("Description", ""))
+                                </p>
+                                <a href=" @Html.Raw(Items.GetStringValue("ButtonUrlOne", ""))" class="button"> @Html.Raw(Items.GetStringValue("ButtonTextOne", ""))</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            }
+            else
+            {
+                <section aria-label="Cheese, butter <br>and beyond."
+                         class="home-section mrgTB20 common-content bgTopAlign"
+                         data-interchange="[@Html.Raw(Items.GetStringValue("BackgroundImage", "").Replace('~', ' ')), default],[@Html.Raw(Items.GetStringValue("BackgroundImageSmall", "").Replace('~', ' ')), small],[@Html.Raw(Items.GetStringValue("BackgroundImageMedium", "").Replace('~', ' ')), medium],[@Html.Raw(Items.GetStringValue("BackgroundImageLarge", "").Replace('~', ' ')),large], [@Html.Raw(Items.GetStringValue("BackgroundImageXLarge", "").Replace('~', ' ')),xlarge]"
+                         data-resize="xe2tt9-interchange"
+                         id="xe2tt9-interchange"
+                         data-e="itx9ei-e"
+                         style="
+                background-image: url('@image');
+              ">
+                    <div class="grid-x flex-dir-row-reverse align-middle">
+                        <div class="cell small-12 medium-6">
+                            <div class="homeProduct  @Html.Raw(Items.GetStringValue("BackgroundImageClass", ""))">
+                                <picture>
+                                    <source srcset="@Html.Raw(Items.GetStringValue("Image", "").Replace('~', ' '))" media="(min-width: 74em)" width="508" height="455">
+                                    <source srcset="@Html.Raw(Items.GetStringValue("Image", "").Replace('~', ' '))" media="(min-width: 64em)" width="508" height="455">
+                                    <source srcset="@Html.Raw(Items.GetStringValue("Image", "").Replace('~', ' '))" media="(min-width: 40em)" width="508" height="455">
+                                    <img src="@Html.Raw(Items.GetStringValue("Image", "").Replace('~', ' '))"width="508" height="455" alt="A description of the image." decoding="sync">
+                                </picture>
+                            </div>
+                        </div>
+                        <div class="cell small-12 medium-6 text-center medium-text-left">
+                            <h2> @Html.Raw(Items.GetStringValue("Title", ""))</h2>
+                            <p>
+                                @Html.Raw(Items.GetStringValue("Description", ""))
+                            </p>
+                            <a href=" @Html.Raw(Items.GetStringValue("ButtonUrlOne", ""))" class="button"> @Html.Raw(Items.GetStringValue("ButtonTextOne", ""))</a>
+                        </div>
+                    </div>
+                </section>
+            }
+        }
+    </div>
+}

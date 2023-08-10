@@ -1,0 +1,59 @@
+﻿@model GDI.Components.Widgets.EmailSignUp.EmailSignUpViewModel
+@if (Model.IsVisible == true)
+{
+    <div class="common-form common-content mrgTB50">
+        <div class="grid-container">
+            <h4>@Html.Raw(Model.Title)</h4>
+            @Html.Raw(Model.Content)
+            <section class="bulk-product-section grid-x grid-margin-x" id="checkBoxSection" data-equalizer="" data-equalize-by-row="true" data-resize="qxti50-eq" data-mutate="ewoxn8-eq" data-e="0xwdpt-e">
+                @if (Model.GetBusinessData != null)
+                {
+                    @foreach (var item in Model.GetBusinessData)
+                    {
+                        <div class="cell small-12 medium-6 large-3 @item.BackgroundColor">
+                            <h5>@item.Title</h5>
+                            <p>@item.Description</p>
+                            <div class="checkbox signupCheckbox">
+                                <input type="checkbox" name="" id="check_@item.SourceId">
+                                <label for="check_@item.SourceId">&nbsp;</label>
+                            </div>
+                        </div>
+                    }
+                }
+            </section>
+            <span class="errorLabel">Please select at least 1 product .</span>
+        </div><div class="grid-container form-bottom common-form common-content">
+            <div class="signup-comment grid-x padd40">
+                <div class="cell small-12 medium-6">
+                    <label>Or, tell us what you’re interested in hearing about:</label>
+                    <textarea cols="" rows="3"></textarea>
+                </div>
+            </div>
+            <div class="grid-x">
+                <div class="grid-x grid-margin-x cell small-12 large-9">
+                    <div class="cell small-12">
+                        <p>Submit your name and email address and we’ll keep you in the know.</p>
+                    </div>
+                    <div class="cell small-12 medium-4">
+                        <label>*FIRST NAME</label>
+                        <input type="text" name="" class="firstName">
+                        <span class="errorLabel">Please enter your First Name.</span>
+                    </div>
+                    <div class="cell small-12 medium-4">
+                        <label>*laST NAME</label>
+                        <input type="text" name="" class="lastName">
+                        <span class="errorLabel">Please enter your Last Name.</span>
+                    </div>
+                    <div class="cell small-12 medium-4">
+                        <label>*email</label>
+                        <input type="text" name="" class="email">
+                        <span class="errorLabel">Please enter your Email.</span>
+                    </div>
+                    <div class="cell small-12 mrgTB20">
+                        <input disabled="" type="submit" name="" class="submitButton button skyblueBtn" value="Submit Request">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

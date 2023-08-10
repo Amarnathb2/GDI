@@ -1,0 +1,75 @@
+﻿@model GDI.Components.Widgets.HeroImage.HeroImageViewModel
+@{
+    var currentlyOpenedLink = (RequestContext.URL.AbsolutePath).Trim('/');
+    var leftTopWidth = "";
+    var leftTopHeight = "";
+    var leftBottomWidth = "";
+    var leftBottomHeight = "";
+    if (!string.IsNullOrEmpty(Model.SelectPage))
+    {
+        var ratio = Model.SelectPage.Split(",");
+        var pagename = ratio[2];
+        var bottomData = ratio[1].Split(":");
+        var topData = ratio[0].Split(":");
+        if (currentlyOpenedLink.Equals(pagename)){
+            leftTopWidth = topData[0];
+            leftTopHeight = topData[1];
+            leftBottomWidth = bottomData[0];
+            leftBottomHeight = bottomData[1];
+        }
+    }
+
+}
+@if (Model.HeroDescription != null)
+{
+    <section aria-label="Hero Banner" class="hero-banner"
+         data-interchange="[@Model.ImageLarge?.Replace("~",""), default],[@Model.ImageSmall?.Replace("~",""), small],[@Model.ImageMedium?.Replace("~",""), medium],[@Model.ImageLarge?.Replace("~",""), large],[@Model.ImageXLarge?.Replace("~",""), xlarge]"
+         data-resize="b90p32-interchange" id="b90p32-interchange" data-e="46r3hm-e"
+         style="background-image: url(@Model.BackgroundImage?.Replace("~","")">
+        <div class="grid-container text-center">
+            <div class="grid-x align-center-middle">
+                <div class="cell small-12 large-9">
+                    @if (Model.CrossImageBottom != null && Model.CrossImageTop != null)
+                    {
+
+                        <span class="left-top show-for-large">
+                            <img src="@Model.CrossImageTop" height="@leftTopHeight" width="@leftTopWidth" alt="@Model.crossImageTopAltText" loading="lazy">
+                        </span>
+                        <span class="right-bottom show-for-large">
+                            <img src="@Model.CrossImageBottom" height="@leftBottomHeight" width="@leftBottomWidth" alt="@Model.CrossImageBottomAltText" loading="lazy">
+                        </span>
+                    }
+                    <h1>@Html.Raw(Model.HeroTitle)</h1>
+                    <p>@Html.Raw(Model.HeroDescription)</p>
+                    @if (@Model.ButtonTextOne != null)
+                    {
+                        <div class="hero-btn">
+                            <a href="@Model.ButtonUrlOne" target="@Model.ButtonTargetOne" class="@Model.ButtonClass">@Html.Raw(Model.ButtonTextOne)</a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else
+{
+    <section aria-label="Hero Banner" class="hero-banner @Model.BackgroundColor">
+        <span class="left-top">
+            <img src="@Model.CrossImageTop" height="@leftTopHeight" width="@leftTopWidth" alt="@Model.crossImageTopAltText" loading="lazy" />
+        </span>
+        <span class="right-bottom">
+            <img src="@Model.CrossImageBottom" height="@leftBottomHeight" width="@leftBottomWidth" alt="@Model.CrossImageBottomAltText" loading="lazy" />
+        </span>
+        <div class="grid-container text-center">
+            <div class="grid-x align-center-middle">
+                <div class="cell small-12 large-9">
+                    @if(!string.IsNullOrEmpty(Model.HeroTitle)){
+                        <h1>@Html.Raw(Model.HeroTitle)</h1>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+}
+

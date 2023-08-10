@@ -1,0 +1,30 @@
+﻿@model GDI.Components.Widgets.HeroImage.HeroImageViewModel
+<section aria-label="Hero Banner"
+         class="hero-banner"
+         data-interchange="[, default],[, small],[, medium],[, large],[, xlarge]"
+         data-resize="e8hlsm-interchange"
+         id="e8hlsm-interchange"
+         data-e="em0myg-e" style="background: #1e9cb0 url(@Model.BackgroundImage) repeat 0 0 !important;">
+    <span class="left-top">
+        <img src="@Model.DefaultImage" alt="" loading="lazy" />
+    </span>
+    <div class="grid-container text-center">
+        <div class="grid-x align-center-middle">
+            <div class="cell small-12 large-9">
+                <h1>@Html.Raw(Model.HeroTitle)</h1>
+                @if (!string.IsNullOrEmpty(Model.HeroDescription))
+                {
+                    <p>
+                        @Html.Raw(Model.HeroDescription)
+                    </p>
+                }
+                @if (@Model.ButtonTextOne != null)
+                {
+                    <div class="hero-btn">
+                        <a href="@Model.ButtonUrlOne" target="@Model.ButtonTargetOne" class="@Model.ButtonClass">@Html.Raw(Model.ButtonTextOne)</a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>

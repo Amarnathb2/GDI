@@ -1,0 +1,35 @@
+﻿@using GDI.Helpers;
+<partial name="../ScriptLayouts/_DefaultLayoutScripts.cshtml" />
+
+<environment include="Development">
+    @{
+        var fileMappingsDev = new Dictionary<string, string>
+    {
+    { "~/GDI/scripts/jquery.mask.min.js", "wwwroot/GDI/scripts/jquery.mask.min.js" },
+    { "~/GDI/scripts/CommonFormValidation.js", "wwwroot/GDI/scripts/CommonFormValidation.js" },
+    { "~/GDI/scripts/ProductRequestFormSubmit.js", "wwwroot/GDI/scripts/ProductRequestFormSubmit.js" },
+    };
+        var versionedUrlsDev = BundlingAndMinificationVersion.GetVersionedFileUrls(fileMappingsDev);
+    }
+    <!-- JavaScript files -->
+    @foreach (var fileMapping in fileMappingsDev.Where(fm => fm.Key.EndsWith(".js")))
+    {
+        <script src="@versionedUrlsDev[fileMapping.Key]"></script>
+    }
+</environment>
+<environment exclude="Development">
+    @{
+        var fileMappings = new Dictionary<string, string>
+    {
+    { "~/GDI/scripts/jquery.mask.min.min.js", "wwwroot/GDI/scripts/jquery.mask.min.min.js" },
+    { "~/GDI/scripts/CommonFormValidation.min.js", "wwwroot/GDI/scripts/CommonFormValidation.min.js" },
+    { "~/GDI/scripts/ProductRequestFormSubmit.min.js", "wwwroot/GDI/scripts/ProductRequestFormSubmit.min.js" },
+    };
+        var versionedUrls = BundlingAndMinificationVersion.GetVersionedFileUrls(fileMappings);
+    }
+    <!-- JavaScript files -->
+    @foreach (var fileMapping in fileMappings.Where(fm => fm.Key.EndsWith(".js")))
+    {
+        <script src="@versionedUrls[fileMapping.Key]"></script>
+    }
+</environment>

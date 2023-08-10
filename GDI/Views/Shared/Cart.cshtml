@@ -1,0 +1,48 @@
+﻿<div class="reveal cartModal" id="cart" data-reveal>
+    <button class="close-button"
+            data-close
+            aria-label="Close modal"
+            type="button">
+        <span class="show-for-sr">close panel</span>
+        <span aria-hidden="true">X</span>
+        <span class="show-for-medium">close</span>
+    </button>
+    <!--MODAL CONTENT Without Products-->
+    <section id="no-product" aria-label="No Product">
+        <h2 class="text-center">
+            <img class="empty-cart-image"
+                 src="https://storcpdkenticomedia.blob.core.windows.net/media/lolgdi/media/gdi-media/assets/empty-cart.svg"
+                 alt="zero products are in your cart" />
+        </h2>
+        <h4 class="text-center">@Html.Raw(@ResHelper.GetString("GDI.CartPopup.WithoutProduct.Title"))</h4>
+        <p class="text-center">
+            @Html.Raw(@ResHelper.GetString("GDI.CartPopup.WithoutProduct.Description"))
+        </p>
+        <p class="text-center">
+            <button class="button blackBtn speciality">@Html.Raw(@ResHelper.GetString("GDI.CartPopup.WithoutProduct.ButtonText"))</button>
+        </p>
+    </section>
+
+    <!--MODAL CONTENT With Products-->
+    <section id="cart-list" aria-label="Cart Product">
+        <h2 class="text-center">
+            <span class="show-for-sr">cart icon</span>
+            <span class="gdi gdi-cart-alt"></span>
+        </h2>
+        <h3 class="text-center">
+            @Html.Raw(@ResHelper.GetString("GDI.CartPopup.WithProduct.Title"))
+        </h3>
+        <hr />
+        <div class="grid-x">
+            <div class="cell small-12 large-8">
+                <div class="productList">@Html.Raw(@ResHelper.GetString("GDI.CartPopup.WithProduct.SubTitle"))</div>
+            </div>
+            <div class="cell small-12 large-4 request-products">
+                <p>
+                    @Html.Raw(@ResHelper.GetString("GDI.CartPopup.WithProduct.Description"))
+                </p>
+                <button class="button fillBlueBtn reuqestPageForm">@Html.Raw(@ResHelper.GetString("GDI.CartPopup.WithProduct.ButtonText"))</button>
+            </div>
+        </div>
+    </section>
+</div>

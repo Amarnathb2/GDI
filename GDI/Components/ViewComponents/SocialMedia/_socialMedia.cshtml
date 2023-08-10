@@ -1,0 +1,22 @@
+﻿@model GDI.Models.SocialMediaViewModel
+@if (Model != null)
+{
+    <div class="cell small-12 medium-6 large-5">
+        <div class="social-panal">
+            <span class="media-icon"><span class="gdi gdi-chat-bubble" aria-hidden="true"></span></span>
+            <div class="social-detail">
+                <h3>@ResHelper.GetString("GDI.MasterPage.SocialMediaTitle")</h3>
+
+                <div style="display: flex;">
+
+                    @foreach (var socialicons in Model?.Socialicons)
+                    {
+                        <p>
+                            <a href="@socialicons?.RedirectUrl" target="@socialicons?.Target" class="social-link"><span class="@socialicons?.IconClass" aria-hidden="true"></span> </a>
+                        </p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,31 @@
+﻿@model GDI.Components.Widgets.HeroImage.HeroImageViewModel
+
+<section aria-label="Hero Banner" class="hero-banner" data-interchange="[@Model.DefaultImage?.Replace("~",""), default],[@Model.ImageSmall?.Replace("~",""), small],[@Model.ImageMedium?.Replace("~",""), medium],[@Model.ImageLarge?.Replace("~",""), large],[@Model.ImageXLarge?.Replace("~",""), xlarge]" data-resize="i1i1tz-interchange" id="i1i1tz-interchange" data-e="rkt8na-e"
+         style="background-image: url(@Model.BackgroundImage?.Replace("~",""))" data-events="resize">
+    <div class="grid-container text-center">
+        <div class="grid-x align-center-middle">
+            <div class="cell small-12 large-9">
+                @if (Model.CrossImageBottom != null && Model.CrossImageTop != null)
+                {
+                    <span class="left-top show-for-large">
+                        <img src="@Model.CrossImageTop" alt="@Model.crossImageTopAltText">
+                    </span>
+                    <span class="right-bottom show-for-large">
+                        <img src="@Model.CrossImageBottom" alt="@Model.CrossImageBottomAltText">
+                    </span>
+                }
+                <h1>@Html.Raw(Model.HeroTitle)</h1>
+                @if (!string.IsNullOrEmpty(Model.HeroDescription))
+                {
+                    <p>@Html.Raw(Model.HeroDescription)</p>
+                }
+                @if (@Model.ButtonTextOne != null)
+                {
+                    <div class="hero-btn">
+                        <a href="@Model.ButtonUrlOne" target="@Model.ButtonTargetOne" class="@Model.ButtonClass">@Html.Raw(Model.ButtonTextOne)</a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>

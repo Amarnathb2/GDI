@@ -1,0 +1,25 @@
+﻿@model GDI.Components.Widgets.Card.CardViewModel
+@if (Model.IsVisible == true)
+{
+    @if (Model.ImagePosition == "_top")
+    {
+        <partial name="~/Components/Widgets/Card/_ImageTop.cshtml" />
+    }
+    else if (Model.ImagePosition == "_bottom")
+    {
+        <partial name="~/Components/Widgets/Card/_ImageBottom.cshtml" />
+    }
+    else if (Model.ImagePosition == "_right")
+    {
+        <partial name="~/Components/Widgets/Card/_ImageRight.cshtml" />
+    }
+    else if (Model.ImagePosition == "_left")
+    {
+        <partial name="~/Components/Widgets/Card/_ImageLeft.cshtml" />
+    }
+    else if (Model.ImagePosition == "_background")
+    {
+        <partial name="~/Components/Widgets/Card/_ImageBackground.cshtml" />
+    }
+}
+

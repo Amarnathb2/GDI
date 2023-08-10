@@ -1,0 +1,56 @@
+﻿@model GDI.Components.Widgets.Accordion.AccordionViewModel
+@if (Model.GetAccordionTabs != null)
+{
+    <div class="grid-x">
+        <div class="large-7">
+            <ul class="tabs" data-responsive-accordion-tabs="tabs small-accordion large-tabs" id="collapsing-tabs">
+                @{
+                    bool count = true;
+                    @foreach (var tab in Model.GetAccordionTabs)
+                    {
+                        <li class="tabs-title @(count?"is-active":"")"><a href="#@tab.AccordionId">@tab.AccordionTitle</a></li>
+                        count = false;
+                        <style>
+                            .accordion-section .tabs-title > a:after, .accordion-section [data-responsive-accordion-tabs] .accordion-title:after {
+                                background: url(@tab.TabImage) 0 0 no-repeat;
+                            }
+
+                            .accordion-section .tabs-title > a:focus:after, .accordion-section .tabs-title > a[aria-selected='true']:after, .accordion-section [data-responsive-accordion-tabs] [aria-expanded="true"]:after {
+                                background-position: right top;
+                            }
+                        </style>
+                    }
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="tabs-content" data-tabs-content="collapsing-tabs">
+        @{
+            bool counter = true;
+            @foreach (var tabContent in Model.GetAccordionTabs)
+            {
+                <div class="tabs-panel @(counter?"is-active":"")" id="@tabContent.AccordionId">
+                    <div class="grid-x grid-margin-x">
+                        <div class="cell small-12 medium-7">
+                            <div>
+                                <p>
+                                    @Html.Raw(tabContent.LeftSection)
+                                </p>
+                            </div>
+                        </div>
+                        <div class="cell small-12 medium-5 flex-container flex-dir-column">
+                            <div class="flex-child-auto">
+                                @Html.Raw(tabContent.RightSection)
+                            </div>
+                            <div class="flex-child-shrink">
+                                <a href="@tabContent.ButtonURL"
+                           class="button blackBtn float-right">@tabContent.ButtonText</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                counter = false;
+            }
+        }
+    </div>
+}

@@ -1,0 +1,13 @@
+﻿@using Kentico.Forms.Web.Mvc
+@using Kentico.Web.Mvc;
+@model GDI.Models.FormComponents.HeroImageCustomLayoutSelector
+@{
+    IDictionary<string, object> htmlAttributes = ViewData.Kentico().GetEditorHtmlAttributes();
+}
+@Html.DropDownListFor(x=>x.SelectedValue,Model.GetIndexItems(),"Select Transformation",htmlAttributes)
+
+<script>
+$(function () {
+    $("select[id='kentico-form_Transformation_SelectedValue'] option:first-child").attr("disabled", "disabled");
+})
+</script>

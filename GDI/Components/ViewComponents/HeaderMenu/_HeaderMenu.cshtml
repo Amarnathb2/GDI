@@ -1,0 +1,119 @@
+@using CMS.Helpers;
+@using GDI.Business.Models;
+@model GDI.Models.MenuView;
+@if (Model != null && Model.HeaderMenu != null)
+{
+    var currentlyOpenedLink = RequestContext.URL.AbsolutePath;
+    <div class="cell small-8 large-9 header-right">
+        <div class="search-cart-panal">
+            <div class="grid-x align-right">
+                <div class="cell small-6 medium-3 large-9 text-center large-text-left">
+                    <a href="#" class="hide-for-large search-open-mobile">
+                        <span class="gdi gdi-search" aria-hidden="true"></span>
+                    </a>
+                    <div class="search-panal text-center">
+                        <span class="search-close menuToggle hide-for-large">
+                            <button class="burgerIcon" type="button">
+                                <span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span>
+                            </button>
+                        </span>
+                        <input type="text" class="input-search" id="input-search" aria-label="Search for the perfect ingredient" placeholder="Search for the perfect ingredient" />
+                        <input type="submit" class="hide" value="Search" />
+                        <a href="#" class="search-icon">
+                            <span class="gdi gdi-search" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="cell small-6 medium-3 large-3 text-center">
+                    <div class="cart-panal">
+                        <label class="show-for-medium show-for-large">YOUR CART</label>
+                        <span class="cart" id="mycart">
+                            <span class="cart-value"></span><span class="gdi gdi-cart-alt" aria-hidden="true"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <span class="title-bar menuToggle hamburgerMenu hide-for-large">
+                <button class="burgerIcon" type="button">
+                    <span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span>
+                </button>
+            </span>
+        </div>
+        <div class="nav-mobile-shadow hide-for-large">
+        </div>
+        <nav class="top-menu">
+            <ul>
+                @foreach (PageMenuModel item in Model.HeaderMenu.ChildItems)
+                {
+                    @if (item.IsChild != true)
+                    {
+                        @if (item.HasChild == true)
+                        {
+                            <li>
+                                @if (currentlyOpenedLink.Contains("/contact-us/") || currentlyOpenedLink.Contains("/product-request/"))
+                                {
+                                    <a href="@Model.HeaderMenu.RelativeUrl" class="active" type="button" id="drop-button" data-toggle="example-dropdown" aria-controls="example-dropdown" data-is-focus="false" data-yeti-box="example-dropdown" aria-haspopup="true" aria-expanded="false" tabindex="0">@item.PageTitle</a>
+
+                                    <ul class="dropdown-pane" id="example-dropdown" data-dropdown="" data-auto-focus="true" aria-hidden="true" data-yeti-box="example-dropdown" data-resize="example-dropdown" aria-labelledby="zeuyz8-dd-anchor" data-e="y35tpn-e" data-events="resize" style="top: 67.5938px; left: 706.781px;">
+                                        @foreach (PageMenuModel sub_item in Model.HeaderMenu.ChildItems)
+                                        {
+                                            @if (sub_item.IsChild == true)
+                                            {
+                                                <li><a href="@sub_item.RelativeUrl">@sub_item.PageTitle</a></li>
+                                            }
+                                        }
+                                    </ul>
+                                }
+                                else
+                                {
+                                    <a href="@Model.HeaderMenu.RelativeUrl" class="" type="button" id="drop-button" data-toggle="example-dropdown" aria-controls="example-dropdown" data-is-focus="false" data-yeti-box="example-dropdown" aria-haspopup="true" aria-expanded="false" tabindex="0">@item.PageTitle</a>
+
+                                    <ul class="dropdown-pane" id="example-dropdown" data-dropdown="" data-auto-focus="true" aria-hidden="true" data-yeti-box="example-dropdown" data-resize="example-dropdown" aria-labelledby="zeuyz8-dd-anchor" data-e="y35tpn-e" data-events="resize" style="top: 67.5938px; left: 706.781px;">
+                                        @foreach (PageMenuModel sub_item in Model.HeaderMenu.ChildItems)
+                                        {
+                                            @if (sub_item.IsChild == true)
+                                            {
+                                                <li><a href="@sub_item.RelativeUrl">@sub_item.PageTitle</a></li>
+                                            }
+                                        }
+                                    </ul>
+                                }
+                            </li>
+                        }
+                        else if (currentlyOpenedLink.Contains("/natural-cheese/") || currentlyOpenedLink.Contains("/butter-butterfats/") || currentlyOpenedLink.Contains("/milk-powders/") || currentlyOpenedLink.Contains("/whey-powders/"))
+                        {
+                            @if (item?.RelativeUrl == ("~/bulk-dairy-products/"))
+                            {
+                                <li>
+                                    <a href="@item?.RelativeUrl" class="active">@item?.PageTitle</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li>
+                                    <a href="@item?.RelativeUrl" class="">@item?.PageTitle</a>
+                                </li>
+                            }
+                        }
+                        else
+                        {
+                            @if (currentlyOpenedLink.Contains(item?.RelativeUrl?.Replace("~", "")!))
+
+                            {
+                                <li>
+                                    <a href="@item?.RelativeUrl" class="active">@item?.PageTitle</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li>
+                                    <a href="@item?.RelativeUrl" class="">@item?.PageTitle</a>
+                                </li>
+                            }
+                        }
+                    }
+                }
+            </ul>
+        </nav>
+    </div>
+}

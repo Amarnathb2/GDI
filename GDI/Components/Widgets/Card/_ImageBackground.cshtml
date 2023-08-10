@@ -1,0 +1,18 @@
+﻿@model GDI.Components.Widgets.Card.CardViewModel
+@if (Model != null && Model.IsVisible == true && Model.BackgroundImage != null && Model.BackgroundSmallImage != null)
+{
+    <section aria-label="Great taste<br> is a science."
+             class="home-section mrgTB20 common-content"
+             data-interchange="[@Model.BackgroundImage.Replace('~',' '), default],[@Model.BackgroundSmallImage.Replace('~',' '), small],[@Model.BackgroundImage.Replace('~',' '), medium],[@Model.BackgroundImage.Replace('~',' ')], [@Model.BackgroundImage.Replace('~',' '),xlarge]"
+             data-resize="acw1w6-interchange" id="acw1w6-interchange" data-e="hzq48s-e" style="background-image: url('@Model.BackgroundImage.Replace('~',' ')')" ; data-events="resize">
+        <div class="grid-x">
+            <div class="cell small-12 medium-6">
+                <h2>@Html.Raw(Model.Title)</h2>
+                <div class="section-box brickRed">
+                    <p>@Html.Raw(Model.Description)</p>
+                    <a href="@Model.ButtonURL" class="button">@Html.Raw(Model.ButtonTextOne)</a>
+                </div>
+            </div>
+        </div>
+    </section>
+}

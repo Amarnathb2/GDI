@@ -1,0 +1,99 @@
+﻿@model GDI.Components.Widgets.SpecialtyPowderRequestForm.SpecialtyPowderRequestFormViewModel
+@if (Model != null && Model.IsVisible == true)
+{
+    <article class="Specialty-powder-form-B">
+        <div class="cart-icon text-center">
+            <div>
+                <i class="gdi gdi-cart-alt"></i>
+                <span>Step 2 of 2</span>
+            </div>
+        </div>
+        <form id="frmSpeialityProductRequest" asp-action="SubmitSpecialtyPowderRequestForm" asp-controller="FormSubmit" data-ajax="true" data-ajax-method="POST" data-ajax-failure="OnFailureSpecialtyProductRequestForm" data-ajax-success="OnSuccesSpecialtyProductRequestForm" data-ajax-complete="OnCompleteSpecialtyProductRequestForm">
+            @Html.AntiForgeryToken()
+            <div class="grid-container form-bottom common-form common-content padd40">
+                <div class="grid-x align-center mrgTB50 ">
+                    <div class="text-center cell small-12 medium-10 large-7">
+                        <h3>@Html.Raw(Model.Title)</h3>
+                        <p>@Html.Raw(Model.Subtitle)</p>
+                        <hr>
+                    </div>
+                    <div class="grid-x grid-margin-x cell small-12 large-9">
+                        <div class="cell small-12 medium-4">
+                            <label for="GDI_Web_Form_First_Name_Int__c">*FIRST NAME</label><input id="GDI_Web_Form_First_Name_Int__c" maxlength="50" class="firstName" name="FirstName" size="20" type="text" /><span class="errorLabel">Please enter your First Name.</span>
+                        </div>
+                        <div class="cell small-12 medium-4">
+                            <label for="GDI_Web_Form_Last_Name_Int__c">*LAST NAME</label><input id="GDI_Web_Form_Last_Name_Int__c" maxlength="100" class="lastName" name="LastName" size="20" type="text" /><span class="errorLabel">Please enter your Last Name.</span>
+                        </div>
+                        <div class="cell small-12 medium-4">
+                            <label for="JobTitle__c">*JOB TITLE</label><input id="JobTitle__c" maxlength="50" class="title" name="JobTitle" size="20" type="text" /><span class="errorLabel">Please enter your Title.</span>
+                        </div>
+                        <div class="cell small-12 medium-4">
+                            <label for="email">*EMAIL</label><input id="email" maxlength="80" class="email" name="Email" size="20" type="text" /><span class="errorLabel">Please enter your Email.</span>
+                        </div>
+                        <div class="cell small-12 medium-4">
+                            <label for="company">*COMPANY NAME</label><input id="company" maxlength="80" class="Company" name="Company" size="20" type="text" /><span class="errorLabel">Please enter your Company Name.</span>
+                        </div>
+                        <div class="cell small-12 medium-4">
+                            <label for="Phone__c">*PHONE</label><input id="Phone__c" maxlength="40" class="phone" name="Phone" size="20" type="text" /><span class="errorLabel">Please enter your Phone.</span>
+                        </div>
+                        <div class="cell small-12 medium-4">
+                            <label for="City__c">*CITY</label><input id="City__c" maxlength="100" class="city" name="City" size="20" type="text" /><span class="errorLabel">Please enter your City.</span>
+                        </div>
+                        <div class="cell small-12 medium-4">
+                            <label>*state</label>
+                            <select id="State__c" maxlength="100" name="State" class="state">
+                                <option value="">--State--</option>
+                                @foreach (var item in Model?.Getstates)
+                                {
+                                    <option value="@item.Options">@item.Options</option>
+                                }
+
+                            </select>
+                            <span class="errorLabel">Please enter your State.</span>
+                        </div>
+                        <div class="cell small-12 medium-4">
+                            <label for="Postal_Zip_Code__c">*ZIP CODE</label><input id="Postal_Zip_Code__c" maxlength="10" class="zip" name="ZipCode" size="20" type="text" /><span class="errorLabel">Please enter your Zip Code.</span>
+                        </div>
+                        <div class="cell small-12 text-center mrgTB20">
+                            <span class="checkbox">
+                                <input type="checkbox" name="OptIn" id="Opt_In_to_News_and_Promotions__c" value="1">
+                                <label for="Opt_In_to_News_and_Promotions__c">Opt In to News and Promotions</label>
+                            </span>
+                        </div>
+                        <div class="cell small-12">
+                            <label for="Reason_Comments__c">Reason Comments</label><textarea id="Reason_Comments__c" name="Comments" rows="3" wrap="soft"></textarea>
+                        </div>
+                        <div class="cell small-12">
+                            <label for="description" hidden>Description</label><textarea hidden rows="3" name="Description" class="description" id="description"></textarea>
+                        </div>
+                        <div class="cell small-12">
+                            <p class="text-center">If you would like to ship to an international address, please <a href="@Html.Raw(@ResHelper.GetString("GDI.ContactUs.Url"))" class="inline-block">contact us here.</a></p>
+                        </div>
+                        <div class="cell small-12 text-center mrgTB20">
+                            <input type="submit" class="button skyblueBtn submitButton" name="submit">
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </article>
+    <article class="Specialty-thank-you-page">
+        <section>
+            <div class="cart-icon text-center">
+                <div><i class="gdi gdi-star-open">&nbsp;</i><i class="gdi gdi-cart-alt">&nbsp;</i></div>
+            </div>
+            <div class="grid-container text-center padd40">
+                <div class="grid-x align-center mrgTB50 common-content">
+                    <div class="cell small-12 medium-9 large-6">
+                        <h3>Thank You.</h3>
+                        <p>Your product request has been received. A sales representative will contact you shortly.</p>
+                        <a class="button skyblueBtn" href="/specialty-powders/">Browse more products</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </article>
+
+}

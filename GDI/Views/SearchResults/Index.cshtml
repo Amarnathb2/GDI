@@ -1,0 +1,25 @@
+﻿@model GDI.Models.AzureSearchResultsViewModel
+
+<editable-area area-identifier="Hero Section" />
+
+@if (Model!=null)
+{
+    <div class="filterHeader">
+        @Html.Raw(Model.SearchFacets)
+    </div>
+    <div class="grid-container">
+        <div class="searchRow grid-x">
+            <div class="medium-8 small-12 columns lazyResults">
+                <div class="resultMainContainer common-content grid-x grid-margin-x">
+                    @Html.Raw(Model.SearchResults)
+                </div>
+                <div class="lazyLoading text-center" style="display:none">
+                    <img src=@ResHelper.GetString("GDI.LoadingImage") alt="image">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="reveal current-modal" id="searchModal" data-reveal="">
+    </div>
+}
+

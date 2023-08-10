@@ -1,0 +1,31 @@
+﻿@using GDI.Helpers;
+<partial name="../ScriptLayouts/_DefaultLayoutScripts.cshtml" />
+
+<environment include="Development">
+    @{
+        var fileMappingsDev = new Dictionary<string, string>
+    {
+    { "~/GDI/scripts/SearchLazyload.js", "wwwroot/GDI/scripts/SearchLazyload.js" },
+    };
+        var versionedUrlsDev = BundlingAndMinificationVersion.GetVersionedFileUrls(fileMappingsDev);
+    }
+    <!-- JavaScript files -->
+    @foreach (var fileMapping in fileMappingsDev.Where(fm => fm.Key.EndsWith(".js")))
+    {
+        <script src="@versionedUrlsDev[fileMapping.Key]"></script>
+    }
+</environment>
+<environment exclude="Development">
+    @{
+        var fileMappings = new Dictionary<string, string>
+    {
+    { "~/GDI/scripts/SearchLazyload.min.js", "wwwroot/GDI/scripts/SearchLazyload.min.js" },
+    };
+        var versionedUrls = BundlingAndMinificationVersion.GetVersionedFileUrls(fileMappings);
+    }
+    <!-- JavaScript files -->
+    @foreach (var fileMapping in fileMappings.Where(fm => fm.Key.EndsWith(".js")))
+    {
+        <script src="@versionedUrls[fileMapping.Key]"></script>
+    }
+</environment>

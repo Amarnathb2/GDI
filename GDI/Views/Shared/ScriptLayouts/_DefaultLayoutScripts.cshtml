@@ -1,0 +1,38 @@
+﻿@using GDI.Helpers;
+<environment include="Development">
+    @{
+        var fileMappingsDev = new Dictionary<string, string>
+    {
+    { "~/GDI/scripts/jquery.js", "wwwroot/GDI/scripts/jquery.js" },
+    { "~/GDI/scripts/foundation.min.js", "wwwroot/GDI/scripts/foundation.min.js" },
+    { "~/GDI/scripts/main.js", "wwwroot/GDI/scripts/main.js" },
+    { "~/GDI/scripts/jquery.cookiemessage.min.js", "wwwroot/GDI/scripts/jquery.cookiemessage.min.js" },
+    };
+        var versionedUrlsDev = BundlingAndMinificationVersion.GetVersionedFileUrls(fileMappingsDev);
+    }
+    <!-- JavaScript files -->
+    @foreach (var fileMapping in fileMappingsDev.Where(fm => fm.Key.EndsWith(".js")))
+    {
+        <script src="@versionedUrlsDev[fileMapping.Key]"></script>
+    }
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajax-unobtrusive/3.2.6/jquery.unobtrusive-ajax.min.js" integrity="sha512-DedNBWPF0hLGUPNbCYfj8qjlEnNE92Fqn7xd3Sscfu7ipy7Zu33unHdugqRD3c4Vj7/yLv+slqZhMls/4Oc7Zg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</environment>
+<environment exclude="Development">
+    @{
+        var fileMappings = new Dictionary<string, string>
+    {
+    { "~/GDI/scripts/jquery.min.js", "wwwroot/GDI/scripts/jquery.min.js" },
+    { "~/GDI/scripts/foundation.min.min.js", "wwwroot/GDI/scripts/foundation.min.min.js" },
+    { "~/GDI/scripts/main.min.js", "wwwroot/GDI/scripts/main.min.js" },
+    { "~/GDI/scripts/jquery.cookiemessage.min.min.js", "wwwroot/GDI/scripts/jquery.cookiemessage.min.min.js" },
+
+    };
+        var versionedUrls = BundlingAndMinificationVersion.GetVersionedFileUrls(fileMappings);
+    }
+    <!-- JavaScript files -->
+    @foreach (var fileMapping in fileMappings.Where(fm => fm.Key.EndsWith(".js")))
+    {
+        <script src="@versionedUrls[fileMapping.Key]"></script>
+    }
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajax-unobtrusive/3.2.6/jquery.unobtrusive-ajax.min.js" integrity="sha512-DedNBWPF0hLGUPNbCYfj8qjlEnNE92Fqn7xd3Sscfu7ipy7Zu33unHdugqRD3c4Vj7/yLv+slqZhMls/4Oc7Zg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</environment>

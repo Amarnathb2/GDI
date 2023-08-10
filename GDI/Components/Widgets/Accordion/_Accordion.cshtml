@@ -1,0 +1,51 @@
+﻿@model GDI.Components.Widgets.Accordion.AccordionViewModel
+@if (Model.IsVisible == true)
+{
+    <div class="grid-container">
+        <section aria-label="Accordion Section" class="accordion-section common-content mrgTB20" data-interchange="[@Model.BackgroundImage, default],[@Model.BackgroundImage, small], [@Model.BackgroundImage, medium], [@Model.BackgroundImage, large],[@Model.BackgroundImage, xlarge]," data-resize="1cuxgd-interchange" id="1cuxgd-interchange" data-e="voues9-e" style="
+    background-image: url('@Model.BackgroundImage');">
+            @Html.Raw(Model.Content)
+            <ul class="accordion" data-accordion
+            data-multi-expand="true"
+            data-allow-all-closed="true">
+                @if (Model.GetAccordions != null)
+                {
+                    @foreach (var item in Model.GetAccordions)
+                    {
+                        <li class="accordion-item is-active mrgTB20" data-accordion-item>
+                            @if (item.AccordionTitle != "")
+                            {
+                                <a href="#@item.AccordionId" class="accordion-title" aria-controls="@item.AccordionId" id="@item.AccordionId-label" aria-expanded="true"><h4 class="accordionTitle">@Html.Raw(item.AccordionTitle)</h4></a>
+                            }
+                            <div class="accordion-content" data-tab-content id="@item.AccordionId" role="region" aria-labelledby="@item.AccordionId-label" aria-hidden="false" style="display: block;">
+                                @if (item.LeftSection == "")
+                                {
+                                    <partial name="~/Components/Widgets/Accordion/_AccordionTab.cshtml" />
+                                }
+                                else
+                                {
+                                    <div class="grid-x grid-padding-x">
+                                        <div class="cell small-12 medium-7">
+                                            @Html.Raw(item.LeftSection)
+                                        </div>
+                                        <div class="cell small-12 medium-5 flex-container flex-dir-column">
+                                            <div class="flex-child-auto">
+                                                @Html.Raw(item.RightSection)
+                                            </div>
+                                            <div class="flex-child-shrink text-center medium-text-right">
+                                                @if (item.ButtonText != "")
+                                                {
+                                                    <a href="@item.ButtonURL" class="button blackBtn">@item.ButtonText</a>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </li>
+                    }
+                }
+            </ul>
+        </section>
+    </div>
+}

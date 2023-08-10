@@ -1,0 +1,13 @@
+﻿@using GDI.Business.Models
+@model GDI.Models.ExternalLinksViewModel
+@if (Model != null)
+{
+    <div class="cell large-12 footer-nav">
+        <ul>
+            @foreach (var external in Model.ExternalPageLinks)
+            {
+                <li><a href="@external?.PageUrl" target="@external?.PageUrlTarget">@external?.PageTitle</a></li>
+            }
+        </ul>
+    </div>
+}

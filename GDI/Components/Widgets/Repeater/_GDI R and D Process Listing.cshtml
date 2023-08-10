@@ -1,0 +1,80 @@
+﻿@using CMS.DocumentEngine
+@using Kentico.Content.Web.Mvc;
+@using Kentico.PageBuilder.Web.Mvc
+@model GDI.Components.Widgets.Repeater.RepeaterPropertiesViewModel
+@using CMS.MacroEngine;
+@using System.Globalization;
+@using CMS.SiteProvider;
+@inject IPageAttachmentUrlRetriever attachmentUrlRetriever
+@if (Model.PageTypeData != null && Model.Visible == true)
+{
+    <div class="grid-container mrgTB20">
+        <span class="middleBorder"></span>
+        @foreach (var Items in Model.PageTypeData)
+        {
+            string image = Items.GetStringValue("BackgroundImageMedium", "").Replace('~', ' ');
+            string buttonText = Items.GetStringValue("ButtonTextTwo", "");
+            @if (buttonText == "")
+            {
+                <section aria-label="@Html.Raw(Items.GetStringValue("Title", ""))" class="home-section common-content"
+             data-interchange="[@Html.Raw(Items.GetStringValue("BackgroundImage", "").Replace('~', ' ')), default],[@Html.Raw(Items.GetStringValue("BackgroundImageSmall", "").Replace('~', ' ')), small],[@Html.Raw(Items.GetStringValue("BackgroundImageMedium", "").Replace('~', ' ')), medium],[@Html.Raw(Items.GetStringValue("BackgroundImageLarge", "").Replace('~', ' ')),large], [@Html.Raw(Items.GetStringValue("BackgroundImageXLarge", "").Replace('~', ' ')),xlarge]" data-resize="musl6v-interchange" id="musl6v-interchange" data-e="284101-e" data-events="resize" style="background-image: url('@image');">
+                    <div class="grid-x align-middle">
+                        <div class="cell small-12 medium-6 paddR30">
+                            <h2>@Html.Raw(Items.GetStringValue("Title", ""))</h2>
+                            <div class="">
+                                <p>
+                                    @Html.Raw(Items.GetStringValue("Description", ""))
+
+                                </p>
+                            </div>
+                        </div>
+                        <div class="cell small-12 medium-6">
+                            <div class="teams-container grid-x" data-equalizer data-equalize-on="medium">
+                                <div class="teams cell small-5">
+                                    <div class="gdi gdi-starburst parent @Html.Raw(Items.GetStringValue("CSSBackgroundClassOne", ""))">
+
+                                        <span class="gdi @Html.Raw(Items.GetStringValue("CSSIconClassOne", ""))"></span>
+                                    </div>
+                                    <div class="grid-x align-center-middle" data-equalizer-watch>
+                                        <p>@Html.Raw(Items.GetStringValue("CSSIconTitleOne", ""))</p>
+                                    </div>
+                                </div>
+                                <div class="teams cell small-2">
+                                    <p class="plus">+</p>
+                                </div>
+                                <div class="teams cell small-5">
+                                    <div class="gdi gdi-starburst parent @Html.Raw(Items.GetStringValue("CSSBackgroundClassTwo", ""))
+                        ">
+                                        <span class="gdi @Html.Raw(Items.GetStringValue("CSSIconClassTwo", ""))"></span>
+                                    </div>
+                                    <div class="grid-x align-center-middle" data-equalizer-watch>
+                                        <p>@Html.Raw(Items.GetStringValue("CSSIconTitleTwo", ""))</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            }
+            else
+            {
+                <section aria-label="dreaming of a flavor that doesn’t exist?" class="home-section common-content full-width-panel text-center">
+                    <div class="panel-image" data-interchange=" [@Html.Raw(Items.GetStringValue("BackgroundImage", "" ).Replace('~', ' ' )), default],[@Html.Raw(Items.GetStringValue("BackgroundImageSmall", "").Replace('~', ' ')), small],[@Html.Raw(Items.GetStringValue("BackgroundImageMedium", "").Replace('~', ' ')), medium],[@Html.Raw(Items.GetStringValue("BackgroundImageLarge", "").Replace('~', ' ')),large], [@Html.Raw(Items.GetStringValue("BackgroundImageXLarge", "").Replace('~', ' ')),xlarge]" data-resize="bsio3s-interchange" id="bsio3s-interchange" data-e="qu89tb-e" data-events="resize" style="background-image: url('@image');">
+                    </div>
+                    <div class="grid-x">
+                        <div class="cell small-12">
+                            <h2>@Html.Raw(Items.GetStringValue("Title", ""))</h2>
+                            <p>@Html.Raw(Items.GetStringValue("Description", ""))</p>
+                            <p class="buttons-paragraph">
+                                <a href="@Html.Raw(Items.GetStringValue("ButtonUrlOne", ""))" class="button">@Html.Raw(Items.GetStringValue("ButtonTextOne", ""))</a> <span>or</span>
+                                <a href="@Html.Raw(Items.GetStringValue("ButtonUrlTwo", ""))" class="button">@Html.Raw(Items.GetStringValue("ButtonTextTwo", ""))</a>
+                            </p>
+                        </div>
+                    </div>
+                </section>
+            }
+        }
+
+
+    </div>
+}

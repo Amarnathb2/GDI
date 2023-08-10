@@ -1,0 +1,134 @@
+[
+  {
+    "outputFileName": "wwwroot/css/app.css",
+    "inputFiles": [
+      "wwwroot/css/app.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/lol-gdi-aos.css",
+    "inputFiles": [
+      "wwwroot/css/lol-gdi-aos.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/lol-gdi-ccpa.css",
+    "inputFiles": [
+      "wwwroot/css/lol-gdi-ccpa.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/lol-main.css",
+    "inputFiles": [
+      "wwwroot/css/lol-main.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    }
+  },
+
+  {
+    "outputFileName": "wwwroot/fonts/woff2.css",
+    "inputFiles": [
+      "wwwroot/css/woff2.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    }
+  },
+
+  {
+    "outputFileName": "wwwroot/GDI/scripts/jquery.js",
+    "inputFiles": [
+      "wwwroot/GDI/scripts/jquery.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    }
+  },
+
+  {
+    "outputFileName": "wwwroot/GDI/scripts/main.js",
+    "inputFiles": [
+      "wwwroot/GDI/scripts/main.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    }
+  },
+
+  {
+    "outputFileName": "wwwroot/GDI/scripts/foundation.min.js",
+    "inputFiles": [
+      "wwwroot/GDI/scripts/foundation.min.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    }
+  },
+
+  {
+    "outputFileName": "wwwroot/GDI/scripts/CommonFormValidation.js",
+    "inputFiles": [
+      "wwwroot/GDI/scripts/CommonFormValidation.js"
+    ],
+    "minify": {
+
+      "enabled": true,
+      "renameLocals": true
+    }
+  },
+
+  {
+    "outputFileName": "wwwroot/GDI/scripts/GeneralSubmitForm.js",
+    "inputFiles": [
+      "wwwroot/GDI/scripts/GeneralSubmitForm.js"
+    ],
+    "minify": {
+
+      "enabled": true,
+      "renameLocals": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/GDI/scripts/ProductRequestFormSubmit.js",
+    "inputFiles": [
+      "wwwroot/GDI/scripts/ProductRequestFormSubmit.js"
+    ],
+    "minify": {
+
+      "enabled": true,
+      "renameLocals": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/GDI/scripts/CommoditiesOrderSubmit.js",
+    "inputFiles": [
+      "wwwroot/GDI/scripts/CommoditiesOrderSubmit.js"
+    ],
+    "minify": {
+
+      "enabled": true,
+      "renameLocals": true
+    }
+  }
+
+
+]

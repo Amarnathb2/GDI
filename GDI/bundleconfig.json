@@ -1,0 +1,172 @@
+[
+  {
+    "outputFileName": "wwwroot/css/app.css",
+    "inputFiles": [
+      "wwwroot/css/app.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/lol-gdi-aos.css",
+    "inputFiles": [
+      "wwwroot/css/lol-gdi-aos.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/lol-gdi-ccpa.css",
+    "inputFiles": [
+      "wwwroot/css/lol-gdi-ccpa.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/lol-main.css",
+    "inputFiles": [
+      "wwwroot/css/lol-main.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/fonts/woff2.css",
+    "inputFiles": [
+      "wwwroot/css/woff2.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/GDI/scripts/main.min.js",
+    "inputFiles": [
+      "wwwroot/GDI/scripts/main.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/GDI/scripts/vue-app.min.js",
+    "inputFiles": [
+      "wwwroot/GDI/scripts/vue-app.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/GDI/scripts/app.min.js",
+    "inputFiles": [
+      "wwwroot/GDI/scripts/app.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/GDI/scripts/CommoditiesOrderSubmit.min.js",
+    "inputFiles": [
+      "wwwroot/GDI/scripts/CommoditiesOrderSubmit.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/GDI/scripts/CommonFormValidation.min.js",
+    "inputFiles": [
+      "wwwroot/GDI/scripts/CommonFormValidation.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/GDI/scripts/foundation.min.min.js",
+    "inputFiles": [
+      "wwwroot/GDI/scripts/foundation.min.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/GDI/scripts/GDI-AOS.min.js",
+    "inputFiles": [
+      "wwwroot/GDI/scripts/GDI-AOS.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/GDI/scripts/GeneralSubmitForm.min.js",
+    "inputFiles": [
+      "wwwroot/GDI/scripts/GeneralSubmitForm.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/GDI/scripts/jquery.cookiemessage.min.min.js",
+    "inputFiles": [
+      "wwwroot/GDI/scripts/jquery.cookiemessage.min.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/GDI/scripts/jquery.mask.min.min.js",
+    "inputFiles": [
+      "wwwroot/GDI/scripts/jquery.mask.min.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/GDI/scripts/jquery.min.min.js",
+    "inputFiles": [
+      "wwwroot/GDI/scripts/jquery.min.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/GDI/scripts/ProductRequestFormSubmit.min.js",
+    "inputFiles": [
+      "wwwroot/GDI/scripts/ProductRequestFormSubmit.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/GDI/scripts/SearchLazyload.min.js",
+    "inputFiles": [
+      "wwwroot/GDI/scripts/SearchLazyload.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/GDI/scripts/SpecialtyPowderRequestForm.min.js",
+    "inputFiles": [
+      "wwwroot/GDI/scripts/SpecialtyPowderRequestForm.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/GDI/scripts/vue-app-compiled.min.js",
+    "inputFiles": [
+      "wwwroot/GDI/scripts/vue-app-compiled.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/GDI/css/lol-foundation.min.css",
+    "inputFiles": [
+      "wwwroot/GDI/css/lol-foundation.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/GDI/css/lol-gdi-aos.min.css",
+    "inputFiles": [
+      "wwwroot/GDI/css/lol-gdi-aos.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/GDI/css/lol-gdi-ccpa.min.css",
+    "inputFiles": [
+      "wwwroot/GDI/css/lol-gdi-ccpa.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/GDI/css/lol-main.min.css",
+    "inputFiles": [
+      "wwwroot/GDI/css/lol-main.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/GDI/scripts/jquery.min.js",
+    "inputFiles": [
+      "wwwroot/GDI/scripts/jquery.js"
+    ]
+  }
+]

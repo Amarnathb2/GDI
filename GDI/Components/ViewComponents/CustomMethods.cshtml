@@ -1,0 +1,32 @@
+﻿@model GDI.Business.Models.CustomMethodsModel
+<script>lolData.page = {@Html.Raw(Model.loldata)}</script>
+<script>
+    lolData.site = { isProduction: Boolean('@Model.isProduction'), language: 'en' }</script>
+@if (RequestContext.CurrentURL.Contains("search"))
+{
+    <script>
+        function getQueryStrings() {
+            var assoc = {};
+            var decode = function (s) { return decodeURIComponent(s.replace(/\+/g, " ")); };
+            var queryString = location.search.substring(1);
+            var keyValues = queryString.split('&');
+
+            for (var i in keyValues) {
+                var key = keyValues[i].split('=');
+                if (key.length > 1) {
+                    assoc[decode(key[0])] = decode(key[1]);
+                }
+            }
+
+            return assoc;
+        }
+        var resultCount = $(".search-filter-sec .active").find("span").text();
+        var count = resultCount.replace(/"|'/g, '');
+        var searchResultCount = count.replace(/[{()}]/g, '');
+
+        var searchQueryStrings = getQueryStrings();
+        var searchKeyword = searchQueryStrings["s"];
+        lolData.event = { name: 'search' }
+        lolData.search = { keyword: searchKeyword, results: searchResultCount }
+    </script>
+}

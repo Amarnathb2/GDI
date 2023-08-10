@@ -1,0 +1,21 @@
+﻿@using CMS.DocumentEngine
+@using Kentico.PageBuilder.Web.Mvc
+@model GDI.Components.Widgets.Repeater.RepeaterPropertiesViewModel
+@using CMS.MacroEngine;
+@using System.Globalization;
+@using CMS.SiteProvider;
+@inject IPageAttachmentUrlRetriever attachmentUrlRetriever
+
+@if (Model.PageTypeData != null && Model.Visible == true)
+{
+    <section aria-label="Farmer Section"
+         class="grid-x grid-margin-x mrgTB50 our-story-card">
+        @foreach (var Items in Model.PageTypeData)
+        {
+            <div class="cell small-12 medium-4 large-4 text-center">
+                <span class="gdi @Html.Raw(Items.GetStringValue("CSSIconClassOne", ""))" aria-hidden="true"></span>
+                <h3>@Html.Raw(Items.GetStringValue("Title", ""))</h3>
+            </div>
+        }
+    </section>
+}

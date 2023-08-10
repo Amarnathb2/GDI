@@ -1,0 +1,20 @@
+﻿@model GDI.Components.Widgets.Card.CardViewModel
+<section class="error-banner">
+    <div class="grid-container text-center padd40">
+        <div class="grid-x align-center mrgTB50 common-content">
+            <div class="cell small-12 medium-9 large-6">
+                <h1>@Html.Raw(Model.Title)</h1>
+                <img src="@Model.Image" alt="@Model.ImageAltText">
+                <h4>
+                    @Html.Raw(Model.Description)
+                </h4>
+                <hr>
+                <p>Try typing the address again, and if that doesn’t work, head over to our homepage where there’s plenty of products to enjoy.</p>
+                @if (Model.IsButton == true)
+                {
+                    <a href="@Model.ButtonURL" class="button @Model.ButtonBackground">@Html.Raw(Model.ButtonTextOne)</a>
+                }
+            </div>
+        </div>
+    </div>
+</section>
